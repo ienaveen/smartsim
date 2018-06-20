@@ -16,8 +16,9 @@ gulp.task('scripts', function () {
 				// "./public/js/ui_health.js",
 				// "./public/js/ui_analytics.js"
 				"./public/js/main.js",
-				"./public/js/tabs.js",
-				"./public/js/tabs1.js"
+				"./public/js/track_progress.js",
+				"./public/js/reports.js",
+				"./public/js/system_info.js"
 			])
 			.pipe(concat("output.js"))
 			.pipe(gulp.dest("./public/dist/"));
