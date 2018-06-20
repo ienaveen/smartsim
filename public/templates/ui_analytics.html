@@ -1,0 +1,77 @@
+<h3>UI Analytics Page</h3>
+
+<div class="ui_analytics"  ng-controller="UIAnalyticsCtrl">
+	<div class="banner">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Active Users</h5>
+				<h1 class="card-value">{{cdp_banner_info.active_users  ? cdp_banner_info.active_users : 0}}</h1>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Total Page Visits</h5>
+				<h1 class="card-value">{{cdp_banner_info.total_page_visits ? cdp_banner_info.total_page_visits : 0}}</h1>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">JS Errors</h5>
+				<h1 class="card-value">{{cdp_banner_info.js_errors ? cdp_banner_info.js_errors : 0}}</h1>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">API Errors</h5>
+				<h1 class="card-value">{{cdp_banner_info.api_errors ? cdp_banner_info.api_errors : 0}}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="ui_analytics_charts">
+		<div class="card">
+			<div class="card-body">
+				<live-bar-chart cdpdata="cdp_graph_page_visit"></live-bar-chart>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<api-error-chart apierrors="graph_api_errors"></api-error-chart>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<js-errors jserrordata="graph_js_errors"></js-errors>
+			</div>
+		</div>
+
+		<div class="card apitimeout">
+			<div class="card-body">
+				<!-- <api-timeout-chart apitimeout="graph_api_time"></api-timeout-chart> -->
+				<api-timeout apitimeout="graph_api_time"></api-timeout>
+			</div>
+		</div>
+
+		<div class="card sunburstchart">
+			<div class="card-body">
+				<sun-burst></sun-burst>
+			</div>
+		</div>
+
+		<div class="card vbarchart">
+			<div class="card-body">
+				<animated-v-bar-chart></animated-v-bar-chart>
+			</div>
+		</div>
+	</div>
+
+	<!-- <line-chart></line-chart> -->
+	<!-- <pie-chart></pie-chart>
+	<donut-chart></donut-chart> -->
+	<!-- <donut-animation-chart></donut-animation-chart> -->
+	<!-- <animated-h-bar-chart></animated-h-bar-chart> -->
+	<!-- <tree-map></tree-map> -->
+
+
+</div>
