@@ -20,6 +20,7 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 
 
   ];
+  $scope.target_types = []
 
   $scope.gridOptions3 = {
     columnDefs: columnDefs,
