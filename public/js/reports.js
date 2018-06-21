@@ -1,22 +1,40 @@
 app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $localStorage) {
 
 	$scope.in_progress_disabled = false;
+	let gridApi, gridColumnApi;
 
 	var columnDefs = [
-		{ headerName: "Make", field: "make" },
-		{ headerName: "Model", field: "model" },
-		{ headerName: "Price", field: "price" }
+		{
+			headerName: "Timestamp", field: "timestamp", rowDrag: true,
+			valueFormatter: function (params) {
+				return "\xA3" + formatNumber(params.value);
+			}
+		},
+		{ headerName: "Load", field: "load", width: 110 },
+		{ headerName: "Replicas", field: "replicas", width: 120 },
+		{ headerName: "Metric Status", field: "metric_status", width: 160 },
+		{ headerName: "Failed Metrics", field: "failed_metrics" }
 	];
 
 	var rowData = [
-		{ make: "Toyota", model: "Celica", price: 35000 },
-		{ make: "Ford", model: "Mondeo", price: 32000 },
-		{ make: "Porsche", model: "Boxter", price: 72000 }
+		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" },
+		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" },
+		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" }
 	];
 
 	$scope.gridOptions = {
 		columnDefs: columnDefs,
-		rowData: rowData
+		rowData: rowData,
+		enableColResize: true,
+		onGridReady: function (params) {
+			gridApi = params.api;
+			gridColumnApi = params.columnApi;
+			gridApi.sizeColumnsToFit();
+		},
+		enableSorting: true,
+		enableFilter: true,
+		rowDragManaged: true,
+		animateRows: true
 	};
 
 	$scope.status = {
@@ -30,8 +48,6 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		{ id: 4, name: 'Daphne Blake' },
 		{ id: 5, name: 'Velma Dinkley' }
 	];
-
-
 
 	toastr.options = {
 		"closeButton": false,
@@ -51,13 +67,18 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		"hideMethod": "fadeOut"
 	}
 
-	$scope.stop = function() {
+	$scope.stop = function () {
 		$scope.in_progress_disabled = true;
 		toastr.success("Simulator stopped");
 	}
 
 	$scope.pause = function () {
 		toastr.warning("Simulator paused");
+		// var rowNode1 = gridApi.getDisplayedRowAtIndex(1);
+		// var rowNode2 = gridApi.getDisplayedRowAtIndex(2);
+		// gridApi.flashCells({
+		// 	rowNodes: [rowNode1, rowNode2]
+		// });
 	}
 
 	$scope.downloadReport = function () {

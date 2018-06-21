@@ -44,3 +44,17 @@ gauge-chart {
         color: white !important;
     }
 }
+
+$border-color: #d2d0cd;
+$font-size: 14px;
+$grid-size: 5px;
+$hover-color: #02a7ec;
+$header-background-image: none;
+$secondary-font-size:14px;
+$header-background-color: white;
+$font-family: "Open Sans", helvetica, arial, sans-serif;
+$header-height: $grid-size * 7 + 1;
+$selected-color: #02a7ec;
+
+@import './styles/ag-grid.scss';
+@import './styles/ag-theme-material.scss';

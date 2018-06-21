@@ -26,8 +26,9 @@ gulp.task('scripts', function () {
 
 gulp.task('sass', function () {
     return gulp.src('./public/sass/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./public/dist/'));
+		.pipe(sass().on('error', sass.logError))
+		.pipe(concat("styles.css"))
+		.pipe(gulp.dest("./public/dist/"));
 });
 
 /**
