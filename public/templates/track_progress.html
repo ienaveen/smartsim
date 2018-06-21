@@ -3,25 +3,25 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">System</h5>
-				<h1 class="card-value">Central</h1>
+				<h4 class="card-value">{{selectedRow.Name}}</h4>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Target Entity</h5>
-				<h1 class="card-value">UCC</h1>
+				<h4 class="card-value">{{selectedRow.target_entity}}</h4>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Simulator</h5>
-				<h1 class="card-value">APSim</h1>
+				<h4 class="card-value">{{selectedRow.simulator}}</h4>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Metrics</h5>
-				<h1 class="card-value">RMQ</h1>
+				<h4 class="card-value">{{selectedRow.metrics}}</h4>
 			</div>
 		</div>
 		<div class="in-progress" ng-if="!in_progress_disabled">

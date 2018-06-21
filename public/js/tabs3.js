@@ -30,6 +30,10 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			gridColumnApi = params.columnApi;
 			gridApi.sizeColumnsToFit();
 		},
+		onSelectionChanged: function(params) {
+			var selectedRows = gridApi.getSelectedRows();
+			$rootScope.selectedRow = selectedRows[0];
+		},
 		enableSorting: true,
 		rowDragManaged: true,
 		animateRows: true,
