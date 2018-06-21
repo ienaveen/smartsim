@@ -28,8 +28,11 @@ button {
     .card {
         color: #00B388;
         border: 2px solid #00B388;
-        .card-body * {
-            text-align: center;
+        .card-body {
+            padding: 0.5rem;
+            * {
+                text-align: center;
+            }
         }
     }
     .in-progress {
