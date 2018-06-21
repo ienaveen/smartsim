@@ -8,18 +8,15 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		{ headerName: "State", field: "state" },
 		{ headerName: "Actions", field: "actions" }
 	];
-
-	var rowData = [
-		{ system: "Central", target_entity: "Message Queue", simulator: "Running", metrics: "CPU", state: "Running" },
-		{ system: "Airwave", target_entity: "Message Queue", simulator: "Running", metrics: "CPU", state: "Running" },
-		{ system: "Controller", target_entity: "Message Queue", simulator: "Running", metrics: "CPU", state: "Running" },
-		{ system: "IAP", target_entity: "Message Queue", simulator: "Running", metrics: "CPU", state: "Running" },
-		{
-			field: "actions", type: "actions", actions: [{ id: "edit-template", iconCls: "icosolo blue icon_edit" },
-			{ id: "delete-template", iconCls: "icosolo delete icon_delete" }]
+  var rowData = [
+    { Name: "Malshi",type: "AC-DC", target_entity: "PA", simulator: "UI SIMULATOR", metrics: "CPU,MEMORY,POSTGRE", state: "NOT STARTED" },
+    { Name: "central-lite",type: "Central", target_entity: "Rabbit MQ app", simulator: "AP-SIM", metrics: "RMQ", state: "NOT STARTED" },
+    { Name: "AW10_1Node",type: "AirWave", target_entity: "UCC", simulator: "C-SIM", metrics: "CPU,MEMORY,RMQ", state: "COMPLETED" },
+    { Name: "Controller",system: "Controller", target_entity: "Air Group", simulator: "CPU,ZMQ,DATAPATH", metrics: "CPU", state: "COMPLETED" },
+    {
+      field: "actions", type: "actions", actions: [{ id: "edit-template", iconCls: "icosolo blue icon_edit" },
+      { id: "delete-template", iconCls: "icosolo delete icon_delete" }]
 		}
-
-
 	];
 
 
@@ -50,6 +47,7 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		$scope.cancel = function () {
 			$mdDialog.cancel();
 		};
+		$scope.simulator_types = ["UI SIM", "IAP SIM", "C SIM", "AP SIM", "Client SIM"];
 
 		$scope.answer = function (answer) {
 			$mdDialog.hide(answer);
@@ -63,10 +61,6 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			if ($scope.selectedIndex !== 0)
 				$scope.selectedIndex = ($scope.selectedIndex - 1);
 		}
-
-		$scope.answer = function (answer) {
-			$mdDialog.hide(answer);
-		};
 
 		$scope.entity_types = [
 			{ value: "process", name: 'Process' },
