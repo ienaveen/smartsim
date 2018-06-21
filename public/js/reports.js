@@ -19,10 +19,10 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 	];
 
 	var rowData = [
-		{ timestamp: 1529553131, load: 100, replicas: 1, failed_metrics: "RMQ Failed", metric_status: "STABLE" }
+		// { timestamp: 1529553131, load: 100, replicas: 1, failed_metrics: "RMQ Failed", metric_status: "STABLE" }
 	];
 
-	var lastRowData = rowData[0];
+	//var lastRowData = rowData[0];
 
 	$scope.gridOptions = {
 		columnDefs: columnDefs,
@@ -80,9 +80,18 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 	
     socket.on('add', function (data) {
 		debugger;
-		//rowData.push(data);		
-		gridApi.updateRowData({ "add": [data]});
-		debugger;
+		if (angular.isUndefined($scope.timeStamp)){
+			$scope.timeStamp = data.timestamp
+			gridApi.updateRowData({ "add": [data]});
+			$rootScope.loadvalue = data.load/5;	
+		}
+		if ($scope.timeStamp !==data.timestamp){
+			gridApi.updateRowData({ "add": [data]});
+			$scope.timeStamp = data.timestamp
+			$rootScope.loadvalue = data.load/5;	
+		}	
+		
+			
 		
     })
 
@@ -117,6 +126,6 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		newRow.timestamp += 1000000;
 		gridApi.updateRowData({ "add": [newRow]});
 		lastRowData = newRow;
-		$rootScope.loadvalue = newRow.load/10;
+		//$rootScope.loadvalue = newRow.load/10;
 	}
 });

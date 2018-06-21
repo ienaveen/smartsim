@@ -46,7 +46,6 @@ app.factory('socket', function ($rootScope) {
 
 
 app.controller('MyCtrl', function ($scope,socket) {
-    debugger
 	socket.emit('requestInit');
 
     socket.on('home', function (data) {
