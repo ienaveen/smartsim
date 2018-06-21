@@ -17,7 +17,7 @@
       </div>
     </md-toolbar>
     <md-dialog-content style="max-width:1000px;max-height:810px;min-width:700px;min-height:350px; ">
-      <md-tabs md-dynamic-height md-border-bottom>
+      <md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex">
         <md-tab label="System">
           <md-content class="md-padding-8">
           	<br/>
@@ -103,8 +103,29 @@
         </md-tab>
         <md-tab label="Load Dependency">
           <md-content class="md-padding">
-            <h1 class="md-display-2">Tab Three</h1>
-            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+          	<div layout-gt-sm="row">
+	          	<md-input-container class="md-block" flex-gt-sm="">
+		              <label>Name</label>
+		              <input ng-model="user.load_name">
+		         </md-input-container>
+		         <md-input-container class="md-block" flex-gt-sm="">
+		              <label>Timout (in hours)</label>
+		              <input ng-model="user.timeouts">
+		         </md-input-container>
+		     </div>
+		     <span class="display-header md-padding">Exit Criteria</span>
+		     <br/>
+		     <div layout-gt-sm="row">
+	          	<md-input-container class="md-block" flex-gt-sm="">
+		              <label>System Breakdown</label>
+		              <input ng-model="user.system_breakdown">
+		         </md-input-container>
+		         <md-input-container class="md-block" flex-gt-sm="">
+		              <label>Total Time</label>
+		              <input ng-model="user.total_time">
+		         </md-input-container>
+		     </div>
+
           </md-content>
         </md-tab>
       </md-tabs>
@@ -114,9 +135,20 @@
       <md-button ng-click="answer('not useful')" >
         Cancel
       </md-button>
+<<<<<<< HEAD
       <span flex></span>
       <md-button ng-click="" style="margin-right:20px;" class="md-primary md-raised" >
+=======
+      <span flex></span>
+      <md-button ng-click="backTab()" ng-if="selectedIndex !== 0">
+        Back
+      </md-button>
+      <md-button ng-click="changeTab()" style="margin-right:20px;" class="md-primary md-raised" ng-if="selectedIndex !== 3">
+>>>>>>> 06b42431691ef8e05dc553e82f5135e5da0b8fdb
         Next
+      </md-button>
+      <md-button ng-click="answer()" style="margin-right:20px;" class="md-primary md-raised" ng-if="selectedIndex == 3">
+        Save
       </md-button>
     </md-dialog-actions>
   </form>

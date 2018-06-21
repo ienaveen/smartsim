@@ -1,4 +1,5 @@
 app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $localStorage, $mdDialog) {
+
 	var columnDefs = [
 		{ headerName: "Sytem", field: "system" },
 		{ headerName: "Target Entity", field: "target_entity" },
@@ -54,6 +55,18 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			$mdDialog.hide(answer);
 		};
 
+		$scope.changeTab = function () {
+			if ($scope.selectedIndex !== 3)
+				$scope.selectedIndex = ($scope.selectedIndex + 1);
+		}
+		$scope.backTab = function () {
+			if ($scope.selectedIndex !== 0)
+				$scope.selectedIndex = ($scope.selectedIndex - 1);
+		}
+
+		$scope.answer = function (answer) {
+			$mdDialog.hide(answer);
+		};
 
 		$scope.entity_types = [
 			{ value: "process", name: 'Process' },
@@ -69,7 +82,5 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			$scope.metrics.push({ metric_definition: "", type: { id: 1, name: 'Process list' }});
 		}
 	}
-
-
 
 });
