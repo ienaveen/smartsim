@@ -36,6 +36,10 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		animateRows: true,
 	};
 
+	$scope.isRowSelected = function() {
+		return $rootScope.selectedRow;
+	}
+
 	$scope.showTabDialog = function (ev) {
 		$mdDialog.show({
 			controller: DialogController,
