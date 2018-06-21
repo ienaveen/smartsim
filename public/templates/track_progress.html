@@ -1,4 +1,4 @@
-<div ng-controller="TabsCtrl" class="ui_health">
+<div ng-controller="TabsCtrl" class="ui_health track-progress">
 	<div class="banner">
 		<div class="card">
 			<div class="card-body">
@@ -37,14 +37,25 @@
 			<button type="button" class="btn btn-secondary" ng-click="downloadReport()">Download Report</button>
 		</div>
 	</div>
-	<uib-tabset class="cdp_tabs">
-		<uib-tab index="0">
-			<uib-tab-heading> Reports </uib-tab-heading>
-			<div ng-include="'templates/reports.html'"></div>
-		</uib-tab>
-		<uib-tab index="1">
-			<uib-tab-heading> System Info </uib-tab-heading>
-			<div ng-include="'templates/system_info.html'"></div>
-		</uib-tab>
-	</uib-tabset>
+	<div class="card result-completed">
+		<div class="card-body">
+			<h5 class="card-title">Final Result</h5>
+			<h4 class="card-value">Total time - 1 min   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Load - 400</h4>
+		</div>
+	</div>
+	<div class="sub-tab-container">
+		<uib-tabset class="cdp_tabs">
+			<uib-tab index="0">
+				<uib-tab-heading> Reports </uib-tab-heading>
+				<div ng-include="'templates/reports.html'"></div>
+			</uib-tab>
+			<uib-tab index="1">
+				<uib-tab-heading> System Info </uib-tab-heading>
+				<div ng-include="'templates/system_info.html'"></div>
+			</uib-tab>
+		</uib-tabset>
+		<div style="margin-top: 5rem;">
+			<gauge-chart loadvalue="loadvalue"></gauge-chart>
+		</div>
+	</div>
 </div>
