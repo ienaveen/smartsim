@@ -1,0 +1,16 @@
+<div ng-controller="DashboardCtrl" class="ui_health">
+	<uib-tabset active="active" class="cdp_tabs">
+		<uib-tab index="0">
+			<uib-tab-heading> Simulators </uib-tab-heading>
+			<div ng-include="'templates/simulators.html'"></div>
+		</uib-tab>
+		<uib-tab index="1">
+			<uib-tab-heading> Track Progress </uib-tab-heading>
+			<div ng-include="'templates/track_progress.html'"></div>
+		</uib-tab>
+		<uib-tab index="2">
+			<uib-tab-heading> Graphs and Reports </uib-tab-heading>
+			<div ng-include="'templates/graphs_and_reports.html'"></div>
+		</uib-tab>
+	</uib-tabset>
+</div>

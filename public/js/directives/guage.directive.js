@@ -54,12 +54,16 @@ app.directive('gaugeChart', function () {
 				// adjust darker band to new value
 				chart.axes[0].bands[1].setEndValue(value);
 			}
+
+			scope.$watch("loadvalue", function (newData, oldData) {
+				debugger;
+			});
 		},
 		template: `
 			<div id="gaugechart" style="width: 100%;height: 500px;"></div>
         `,
 		scope: {
-			cdpdata: "="
+			loadvalue: "="
 		},
 		restrict: 'E'
 	}

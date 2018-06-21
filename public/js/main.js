@@ -1,7 +1,7 @@
 app.config(function ($routeProvider) {
 	$routeProvider
 		.when("/", {
-			templateUrl: "templates/track_progress.html"
+			templateUrl: "templates/dashboard.html"
 		})
 })
 

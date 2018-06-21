@@ -5,9 +5,9 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 
 	var columnDefs = [
 		{
-			headerName: "Timestamp", field: "timestamp", rowDrag: true,
+			headerName: "Timestamp", field: "timestamp",// rowDrag: true,
 			valueFormatter: function (params) {
-				return "\xA3" + formatNumber(params.value);
+				return moment(params.value).format('MM-DD-YYYY, h:mm:ss a');;
 			}
 		},
 		{ headerName: "Load", field: "load", width: 110 },
@@ -17,9 +17,7 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 	];
 
 	var rowData = [
-		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" },
-		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" },
-		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" }
+		{ timestamp: 1529553131, load: 100, replicas: 1, metric_status: "RMQ Failed", failed_metrics: "PASS" }
 	];
 
 	$scope.gridOptions = {
@@ -40,14 +38,6 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 	$scope.status = {
 		isopen: false
 	};
-
-	$scope.users = $scope.users || [
-		{ id: 1, name: 'Scooby Doo' },
-		{ id: 2, name: 'Shaggy Rodgers' },
-		{ id: 3, name: 'Fred Jones' },
-		{ id: 4, name: 'Daphne Blake' },
-		{ id: 5, name: 'Velma Dinkley' }
-	];
 
 	toastr.options = {
 		"closeButton": false,
@@ -83,5 +73,13 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 
 	$scope.downloadReport = function () {
 		toastr.success("Downloading the report");
+	}
+
+	setInterval(randomValue, 2000);
+
+	// set random value
+	function randomValue() {
+		var value = Math.round(Math.random() * 100);
+		$scope.loadvalue = value;
 	}
 });
