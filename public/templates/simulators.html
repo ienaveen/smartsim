@@ -1,9 +1,10 @@
 <div ng-controller="Tabs3Ctrl" id="t3" class="simulators">
-	<h3>Tabs3 Page</h3>
-	<md-button class="md-primary" class="md-primary md-raised" ng-click="showTabDialog($event)">Button1</md-button>
-		<div ag-grid="gridOptions3" class="ag-theme-material" style="height: 100%;width:100%"></div>
-	<div>
-		<script type="text/ng-template" id="tabDialog.tmpl.html"><md-dialog aria-label="Simulator Configuration	">
+  <h3>Simulators</h3>
+  <md-button class="md-primary" class="md-primary md-raised" ng-click="showTabDialog($event)">Add Simulator</md-button>
+
+  <div ag-grid="gridOptions3" class="ag-theme-material" style="height: 100%;width:100%"></div>
+  <div>
+    <script type="text/ng-template" id="tabDialog.tmpl.html"><md-dialog aria-label="Simulator Configuration	">
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -23,23 +24,30 @@
 	            <md-input-container>
 	              <label>System</label>
 	              <input ng-model="user.system">
-	            </md-input-container>
-	            <md-input-container >
+              </md-input-container>
+              <md-input-container>
+                  <label>Type</label>
+                  <md-select ng-model="metric.type">
+                      <md-option ng-repeat="type in system_types" ng-value="type">{{type.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+	            <!-- <md-input-container >
 	              <label>Description</label>
 	              <input ng-model="user.description">
-	            </md-input-container>
-	        </div>
+	            </md-input-container> -->
+          </div>
+          <span class="display-header md-padding paddingnone">Credentials</span>
             <br/>
-            <div layout-gt-sm="row">
-            <md-input-container>
-              <label>Type</label>
-              <input ng-model="user.type">
-            </md-input-container>
-            <md-input-container>
-              <label>Credentials</label>
-              <input ng-model="user.credentials">
-            </md-input-container>
-           </div>
+            <div layout-gt-sm="row">            
+              <md-input-container>
+                <label>UserName</label>
+                <input ng-model="user.user_name">
+              </md-input-container>
+              <md-input-container>
+                  <label>Password</label>
+                  <input ng-model="user.password">
+              </md-input-container>
+            </div>
           </md-content>
         </md-tab>
         <md-tab label="Target Entity">
@@ -95,8 +103,34 @@
         </md-tab>
         <md-tab label="Simulator">
           <md-content class="md-padding">
-            <h1 class="md-display-2">Tab Three</h1>
-            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+            <div layout-gt-sm="row" >
+              <md-input-container layout-gt-sm="row">
+                <label>Type</label>
+                <md-select ng-model="type.name">
+                  <md-option ng-repeat="type in simulator_types" ng-value="type.name">{{type.name}}</md-option>
+                </md-select>               
+              </md-input-container> 
+              <md-input-container>
+                  <label ng-if = "type.name == 'CMD'">Enter Command</label>
+                <input ng-model="user.user_name" ng-if = "type.name == 'CMD'">
+                <md-button ng-if = "type.name == 'Kubernetes YAML'">
+                    Browse 
+                </md-button>
+            </md-input-container> 
+
+            </div>
+            <span class="display-header md-padding paddingnone">Credentials</span>
+            <br/>
+            <div layout-gt-sm="row">            
+              <md-input-container>
+                <label>UserName</label>
+                <input ng-model="user.user_name">
+              </md-input-container>
+              <md-input-container>
+                  <label>Password</label>
+                  <input ng-model="user.password">
+              </md-input-container>
+            </div>
           </md-content>
         </md-tab>
         <md-tab label="Load Dependency">
@@ -111,7 +145,7 @@
 		              <input ng-model="user.timeouts">
 		         </md-input-container>
 		     </div>
-		     <span class="display-header md-padding">Exit Criteria</span>
+		     <span class="display-header md-padding paddingnone">Exit Criteria</span>
 		     <br/>
 		     <div layout-gt-sm="row">
 	          	<md-input-container class="md-block" flex-gt-sm="">
@@ -147,7 +181,7 @@
   </form>
 </md-dialog>
 </script>
-	</div>
+  </div>
 
 </div>
 </div>
