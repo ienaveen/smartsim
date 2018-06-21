@@ -20,7 +20,7 @@ app.controller("GraphsReportsCtrl", function ($scope) {
 			sort: "desc"
 		},
 		{ headerName: "Load", field: "load"},
-		{ headerName: "Replicas", field: "replicas"}
+		{ headerName: "Release", field: "release"}
 	];
 
 	var rowData1 = [
@@ -64,13 +64,19 @@ app.controller("GraphsReportsCtrl", function ($scope) {
 			},
 			sort: "desc"
 		},
+		{ headerName: "Release", field: "release" },
 		{ headerName: "Load", field: "load" },
-		{ headerName: "Replicas", field: "replicas" }
+		{ headerName: "Total nodes", field: "nodes" },
+		{ headerName: "Status", field: "status" }
+
 	];
 
 	var rowData2 = [
-		{ timestamp: 1529553131, load: 300, replicas: 4, failed_metrics: "RMQ Failed", metric_status: "STABLE" },
-		{ timestamp: 1529653131, load: 400, replicas: 6, failed_metrics: "RMQ Failed", metric_status: "STABLE" }
+		{ timestamp: 1529553131, load: 300, status: "STABLE", nodes: 5, release: "2.4.1-31" },
+		{ timestamp: 1529653131, load: 400, status: "STABLE", nodes: 7, release: "2.4.2-54" },
+		{ timestamp: 1539553131, load: 300, status: "STABLE", nodes: 5, release: "2.4.3-78" },
+		{ timestamp: 1529753131, load: 400, status: "STABLE", nodes: 10, release: "2.3.9-11" },
+		{ timestamp: 1529573131, load: 300, status: "STABLE", nodes: 5, release: "2.4.0-22" }
 	];
 
 	$scope.gridOptions2 = {
