@@ -4,3 +4,57 @@
     grid-gap: 10px;
     height: 100%;
 }
+
+.banner {
+    display: grid;
+    grid-template-columns: 13% 13% 13% 13% auto;
+    grid-gap: 5%;
+    margin-bottom: 4rem;
+    position: relative;
+    .card {
+        border: 0px;
+        background-color: #39b939;
+        color: white;
+        border-radius: 50%;
+        .card-body * {
+            text-align: center;
+        }
+    }
+    .in-progress {
+        div {
+            padding-left: 45%;
+            border-bottom: 1rem;
+            path {
+                stroke: #39b939;
+            }
+        }
+        h3 {
+            margin-bottom: 2rem;
+        }
+        text-align: center;
+        color: #388a38;
+        top: 1rem;
+        position: absolute;
+        right: 0rem;
+    }
+}
+
+gauge-chart {
+    .amcharts-chart-div a {
+        color: white !important;
+    }
+}
+
+$border-color: #d2d0cd;
+$font-size: 14px;
+$grid-size: 5px;
+$hover-color: #02a7ec;
+$header-background-image: none;
+$secondary-font-size:14px;
+$header-background-color: white;
+$font-family: "Open Sans", helvetica, arial, sans-serif;
+$header-height: $grid-size * 7 + 1;
+$selected-color: #02a7ec;
+
+@import './styles/ag-grid.scss';
+@import './styles/ag-theme-material.scss';

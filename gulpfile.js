@@ -10,13 +10,10 @@ gulp.task('scripts', function () {
     return gulp
 			.src([
 				"./public/js/directives/*.js",
-				// "./public/js/global.js",
-				// "./public/js/app-c.js",
-				// "./public/js/cdps.js",
-				// "./public/js/ui_health.js",
-				// "./public/js/ui_analytics.js"
 				"./public/js/main.js",
-				"./public/js/tabs.js",
+				"./public/js/track_progress.js",
+				"./public/js/reports.js",
+				"./public/js/system_info.js",
 				"./public/js/*.js"
 			])
 			.pipe(concat("output.js"))
@@ -25,8 +22,9 @@ gulp.task('scripts', function () {
 
 gulp.task('sass', function () {
     return gulp.src('./public/sass/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./public/dist/'));
+		.pipe(sass().on('error', sass.logError))
+		.pipe(concat("styles.css"))
+		.pipe(gulp.dest("./public/dist/"));
 });
 
 /**
