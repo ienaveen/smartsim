@@ -20,7 +20,15 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 
 
   ];
-  $scope.target_types = []
+  user = {"target_type":"Processlist"};
+  $scope.target_types = ["Processlist","PODlist","DiskI/O","Infra"];
+
+  //   $scope.target_types = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+  //   'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+  //   'WY').split(' ').map(function(state) {
+  //       return {abbrev: state};
+  //     });
+  // })
 
   $scope.gridOptions3 = {
     columnDefs: columnDefs,
@@ -28,7 +36,6 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
     rowData: rowData
   };
   $scope.showTabDialog = function (ev) {
-    debugger;
     $mdDialog.show({
       controller: DialogController,
       templateUrl: 'tabDialog.tmpl.html',
@@ -50,6 +57,14 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
     $scope.cancel = function () {
       $mdDialog.cancel();
     };
+    $scope.changeTab = function(){
+      if ($scope.selectedIndex !== 3)
+        $scope.selectedIndex = ($scope.selectedIndex + 1);
+    }
+    $scope.backTab = function(){
+      if ($scope.selectedIndex !== 0)
+      $scope.selectedIndex = ($scope.selectedIndex - 1);
+    }
 
     $scope.answer = function (answer) {
       $mdDialog.hide(answer);

@@ -3,7 +3,11 @@
         font-size: 24px !important;
     }
 }
-
+.display-header   
+{ font-size: 23px;}
+button{
+    border-radius: 5px;
+}
 .section-1 {
     display: grid;
     grid-template-columns: 60% auto;
