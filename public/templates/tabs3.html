@@ -1,22 +1,105 @@
-<div ng-controller="Tabs3Ctrl" id = "t3">
-	<h3>Tabs3 Page</h3>
-	<div class="section-1">
-		<div ag-grid="gridOptions3" class="ag-theme-material" style="height: 100%;width:100%"></div>
-		<div>
-			<!-- <div class="btn-group mb-2" uib-dropdown is-open="status.isopen">
-				<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-					Button dropdown
-					<span class="caret"></span>
-				</button>
-				<div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-					<a href="#" class="dropdown-item">Action</a>
-					<a href="#" class="dropdown-item">Another action</a>
-					<a href="#" class="dropdown-item">Something else here</a>
-					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item">Separated link</a>
-				</div>
-			</div> -->
-			<gauge-chart></gauge-chart>
-		</div>
-	</div>
+<div ng-controller="Tabs3Ctrl" id="t3">
+  <h3>Tabs3 Page</h3>
+  <md-button class="md-primary" class="md-primary md-raised" ng-click="showTabDialog($event)">Button1</md-button>
+  <div class="section-1">
+    <div ag-grid="gridOptions3" class="ag-theme-material" style="height: 100%;width:100%"></div>
+    <div>
+      <gauge-chart></gauge-chart>
+    </div>
+  </div>
+  <div>
+    <script type="text/ng-template" id="tabDialog.tmpl.html"><md-dialog aria-label="Simulator Configuration	">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Simulator Configuration</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:1000px;max-height:810px;min-width:700px;min-height:350px; ">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="System">
+          <md-content class="md-padding-8">  
+          	<br/> 
+          	<div layout-gt-sm="row">       
+	            <md-input-container class="md-block" flex-gt-sm=""> 
+	              <label>System</label>
+	              <input ng-model="user.system">
+	            </md-input-container>                      
+	            <md-input-container >
+	              <label>Description</label>
+	              <input ng-model="user.description">
+	            </md-input-container>
+	        </div>
+            <br/>
+            <div layout-gt-sm="row">       
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>Type</label>
+              <input ng-model="user.type">
+            </md-input-container>            
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>Credentials</label>
+              <input ng-model="user.credentials">
+            </md-input-container>
+           </div>            
+          </md-content>                 
+        </md-tab>
+        <md-tab label="Target Entity">
+          <md-content class="md-padding">
+            
+          <md-content class="md-padding-8">          
+            <md-input-container class="md-block" flex-gt-sm=""> 
+              <label>Name</label>
+              <input ng-model="user.name">
+            </md-input-container>                      
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>Description</label>
+              <input ng-model="user.description">
+            </md-input-container>
+            <br/>
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>Type</label>
+              <input ng-model="user.type">
+            </md-input-container>            
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>Credentials</label>
+              <input ng-model="user.credentials">
+            </md-input-container>            
+          </md-content>
+
+          </md-content>
+        </md-tab>
+        <md-tab label="Simulator">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Tab Three</h1>
+            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+          </md-content>
+        </md-tab>
+        <md-tab label="Load Dependency">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Tab Three</h1>
+            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="answer('not useful')" >
+        Cancel
+      </md-button>
+      <span flex></span>      
+      <md-button ng-click="" style="margin-right:20px;" class="md-primary md-raised" >
+        Next
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+</script>
+  </div>
+
+</div>
 </div>
