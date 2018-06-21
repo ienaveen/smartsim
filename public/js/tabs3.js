@@ -13,7 +13,7 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
     { name: "Malshi",type: "AC-DC", target_entity: "PA", simulator: "UI SIMULATOR", metrics: "CPU,MEMORY,POSTGRE", state: "NOT STARTED" },
     { name: "Central-Lite",type: "Central", target_entity: "Rabbit MQ app", simulator: "AP-SIM", metrics: "RMQ", state: "NOT STARTED" },
     { name: "AW10_1Node",type: "AirWave", target_entity: "UCC", simulator: "C-SIM", metrics: "CPU,MEMORY,RMQ", state: "COMPLETED" },
-    { name: "Controller",system: "Controller", target_entity: "Air Group", simulator: "CPU,ZMQ,DATAPATH", metrics: "CPU", state: "COMPLETED" }
+    { name: "Controller_7210",type: "Controller", target_entity: "Air Group", simulator: "CPU,ZMQ,DATAPATH", metrics: "CPU", state: "COMPLETED" }
 	];
 
 
