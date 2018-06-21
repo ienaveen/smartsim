@@ -44,19 +44,18 @@ app.directive('gaugeChart', function () {
 				}]
 			});
 
-			setInterval(randomValue, 2000);
-
-			// set random value
-			function randomValue() {
-				var value = Math.round(Math.random() * 100);
-				chart.arrows[0].setValue(value);
-				chart.axes[0].setTopText(value + " %");
-				// adjust darker band to new value
-				chart.axes[0].bands[1].setEndValue(value);
+			// setInterval(randomValue, 2000);
+			function setGauge(value) {
+				if(value){
+					chart.arrows[0].setValue(value);
+					chart.axes[0].setTopText(value + " %");
+					// adjust darker band to new value
+					chart.axes[0].bands[1].setEndValue(value);
+				}
 			}
 
 			scope.$watch("loadvalue", function (newData, oldData) {
-				debugger;
+				setGauge(newData);
 			});
 		},
 		template: `

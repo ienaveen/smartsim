@@ -22,7 +22,7 @@
     }
     .in-progress {
         div {
-            padding-left: 45%;
+            padding-left: 30%;
             border-bottom: 1rem;
             path {
                 stroke: #39b939;
@@ -42,7 +42,10 @@
 gauge-chart {
     .amcharts-chart-div a {
         color: white !important;
-    }
+	}
+	svg{
+		height: 600px !important;
+	}
 }
 
 $border-color: #d2d0cd;
@@ -52,9 +55,11 @@ $hover-color: #02a7ec;
 $header-background-image: none;
 $secondary-font-size:14px;
 $header-background-color: white;
-$font-family: "Open Sans", helvetica, arial, sans-serif;
-$header-height: $grid-size * 7 + 1;
+$font-family: "Open Sans",
+helvetica,
+arial,
+sans-serif;
+$header-height: $grid-size * 7+1;
 $selected-color: #02a7ec;
-
 @import './styles/ag-grid.scss';
 @import './styles/ag-theme-material.scss';
