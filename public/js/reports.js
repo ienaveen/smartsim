@@ -77,22 +77,21 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		$rootScope.in_progress_disabled = true;
 		toastr.success("Simulator stopped");
 	}
-	
+
+	let stop = false;
+
     socket.on('add', function (data) {
-		debugger;
-		if (angular.isUndefined($scope.timeStamp)){
-			$scope.timeStamp = data.timestamp
+		if (angular.isUndefined($scope.timeStamp) || $scope.timeStamp !==data.timestamp){
+			if (data.metric_status === "UNSTABLE") {
+				stop = true;
+			}
 			gridApi.updateRowData({ "add": [data]});
-			$rootScope.loadvalue = data.load/5;	
+			$scope.timeStamp = data.timestamp
+			$rootScope.loadvalue = data.load/5;
+			if (stop && data.metric_status === "STABLE") {
+				$rootScope.in_progress_disabled = true;
+			}
 		}
-		if ($scope.timeStamp !==data.timestamp){
-			gridApi.updateRowData({ "add": [data]});
-			$scope.timeStamp = data.timestamp
-			$rootScope.loadvalue = data.load/5;	
-		}	
-		
-			
-		
     })
 
 	$scope.pause = function () {

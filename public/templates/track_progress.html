@@ -37,7 +37,7 @@
 			<button type="button" class="btn btn-secondary" ng-click="downloadReport()">Download Report</button>
 		</div>
 	</div>
-	<div class="card result-completed">
+	<div class="card result-completed" ng-if="in_progress_disabled">
 		<div class="card-body">
 			<h5 class="card-title">Final Result</h5>
 			<h4 class="card-value">Total time - 1 min   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Load - 400</h4>
