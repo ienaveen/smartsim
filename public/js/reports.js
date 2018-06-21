@@ -1,4 +1,4 @@
-app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $localStorage) {
+app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $localStorage,socket) {
 
 	$rootScope.in_progress_disabled = false;
 	let gridApi, gridColumnApi;
@@ -77,6 +77,14 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		$rootScope.in_progress_disabled = true;
 		toastr.success("Simulator stopped");
 	}
+	
+    socket.on('add', function (data) {
+		debugger;
+		//rowData.push(data);		
+		gridApi.updateRowData({ "add": [data]});
+		debugger;
+		
+    })
 
 	$scope.pause = function () {
 		toastr.warning("Simulator paused");
@@ -86,7 +94,7 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		toastr.success("Downloading the report");
 	}
 
-	var rowDataChange = setInterval(randomValue, 2000);
+	//var rowDataChange = setInterval(randomValue, 2000);
 
 	// set random value
 	function randomValue() {
