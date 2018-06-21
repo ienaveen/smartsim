@@ -3,11 +3,15 @@
         font-size: 24px !important;
     }
 }
-.display-header   
-{ font-size: 23px;}
-button{
+
+.display-header {
+    font-size: 23px;
+}
+
+button {
     border-radius: 5px;
 }
+
 .section-1 {
     display: grid;
     grid-template-columns: 60% auto;
@@ -43,7 +47,7 @@ button{
         color: #388a38;
         top: 1rem;
         position: absolute;
-        right: 0rem;
+        right: 3rem;
     }
 }
 
@@ -92,6 +96,10 @@ div[layout-gt-sm] {
     }
 }
 
+.tab-content>.active {
+    margin-left: 2rem;
+}
+
 .nav-tabs {
     background-color: #00B388;
     margin-bottom: 2rem !important;
@@ -110,6 +118,9 @@ div[layout-gt-sm] {
         .uib-tab {
             background-color: #00B388;
         }
+    }
+    .tab-content>.active {
+        margin-left: 0rem;
     }
 }
 

@@ -23,7 +23,16 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 	$scope.gridOptions3 = {
 		columnDefs: columnDefs,
 		rowSelection: 'single',
-		rowData: rowData
+		rowData: rowData,
+		enableColResize: true,
+		onGridReady: function (params) {
+			gridApi = params.api;
+			gridColumnApi = params.columnApi;
+			gridApi.sizeColumnsToFit();
+		},
+		enableSorting: true,
+		rowDragManaged: true,
+		animateRows: true,
 	};
 	$scope.showTabDialog = function (ev) {
 		$mdDialog.show({
