@@ -2,7 +2,7 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 
 	$rootScope.in_progress_disabled = false;
 	let gridApi, gridColumnApi;
-	$scope.loadvalue = 0;
+	$rootScope.loadvalue = 0;
 
 	var columnDefs = [
 		{
@@ -109,6 +109,6 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		newRow.timestamp += 1000000;
 		gridApi.updateRowData({ "add": [newRow]});
 		lastRowData = newRow;
-		$scope.loadvalue = newRow.load/10;
+		$rootScope.loadvalue = newRow.load/10;
 	}
 });

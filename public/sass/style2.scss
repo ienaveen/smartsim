@@ -28,22 +28,12 @@ button {
     grid-gap: 5%;
     margin-bottom: 4rem;
     position: relative;
-    .card {
-        color: #00B388;
-        border: 2px solid #00B388;
-        .card-body {
-            padding: 0.5rem;
-            * {
-                text-align: center;
-            }
-        }
-    }
     .in-progress {
         div {
             padding-left: 30%;
             border-bottom: 1rem;
             path {
-                stroke: #39b939;
+                stroke: #388a38;
             }
         }
         h3 {
@@ -54,6 +44,17 @@ button {
         top: 1rem;
         position: absolute;
         right: 3rem;
+    }
+}
+
+.track-progress .card {
+    color: #00B388;
+    border: 2px solid #00B388;
+    .card-body {
+        padding: 0.5rem;
+        * {
+            text-align: center;
+        }
     }
 }
 
@@ -133,6 +134,33 @@ div[layout-gt-sm] {
 .ag-header-row {
     background-color: #00B388;
     color: white;
+}
+
+.ag-body-viewport {
+    overflow-x: hidden;
+}
+
+.system-info {
+    width: 60%;
+    tr {
+        td:nth-child(1) {
+            background-color: #00B388;
+            color: white;
+        }
+        td:nth-child(2) {
+            text-align: right;
+            color: #00B388;
+        }
+    }
+}
+
+.sub-tab-container {
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+
+.result-completed {
+    margin: 0 30%;
 }
 
 $border-color: #d2d0cd;
