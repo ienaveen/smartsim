@@ -2,25 +2,27 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 
 	$scope.in_progress_disabled = false;
 	let gridApi, gridColumnApi;
+	$scope.loadvalue = 0;
 
 	var columnDefs = [
 		{
-			headerName: "Timestamp", field: "timestamp", rowDrag: true,
+			headerName: "Timestamp", field: "timestamp",// rowDrag: true,
 			valueFormatter: function (params) {
-				return "\xA3" + formatNumber(params.value);
-			}
+				return moment(params.value*1000).format('MM-DD-YYYY, h:mm:ss a');;
+			},
+			sort: "desc"
 		},
 		{ headerName: "Load", field: "load", width: 110 },
 		{ headerName: "Replicas", field: "replicas", width: 120 },
-		{ headerName: "Metric Status", field: "metric_status", width: 160 },
-		{ headerName: "Failed Metrics", field: "failed_metrics" }
+		{ headerName: "Failed Metrics", field: "failed_metrics", width: 160 },
+		{ headerName: "Status", field: "status" }
 	];
 
 	var rowData = [
-		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" },
-		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" },
-		{ timestamp: 1529553131, load: 100, replicas: 3, metric_status: "RMQ Failed", failed_metrics: "PASS" }
+		{ timestamp: 1529553131, load: 100, replicas: 1, failed_metrics: "RMQ Failed", status: "PASS" }
 	];
+
+	var lastRowData = rowData[0];
 
 	$scope.gridOptions = {
 		columnDefs: columnDefs,
@@ -34,20 +36,25 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		enableSorting: true,
 		enableFilter: true,
 		rowDragManaged: true,
-		animateRows: true
+		animateRows: true,
+		onRowDataUpdated: function () {
+			var rowNode1 = gridApi.getDisplayedRowAtIndex(0);
+			gridApi.flashCells({
+				rowNodes: [rowNode1]
+			});
+		},
+		getRowStyle: function (params) {
+			if (params.node.data.status === "PASS") {
+				return { color: 'green' }
+			}else{
+				return { color: 'red' }
+			}
+		}
 	};
 
 	$scope.status = {
 		isopen: false
 	};
-
-	$scope.users = $scope.users || [
-		{ id: 1, name: 'Scooby Doo' },
-		{ id: 2, name: 'Shaggy Rodgers' },
-		{ id: 3, name: 'Fred Jones' },
-		{ id: 4, name: 'Daphne Blake' },
-		{ id: 5, name: 'Velma Dinkley' }
-	];
 
 	toastr.options = {
 		"closeButton": false,
@@ -74,14 +81,35 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 
 	$scope.pause = function () {
 		toastr.warning("Simulator paused");
-		// var rowNode1 = gridApi.getDisplayedRowAtIndex(1);
-		// var rowNode2 = gridApi.getDisplayedRowAtIndex(2);
-		// gridApi.flashCells({
-		// 	rowNodes: [rowNode1, rowNode2]
-		// });
 	}
 
 	$scope.downloadReport = function () {
 		toastr.success("Downloading the report");
+	}
+
+	var rowDataChange = setInterval(randomValue, 2000);
+
+	// set random value
+	function randomValue() {
+		var newRow = angular.copy(lastRowData);
+		if (lastRowData.load === 700) {
+			newRow.load += 100;
+			newRow.replicas += 1;
+			newRow.status = "FAIL";
+		} else if(lastRowData.load === 800) {
+			newRow.replicas -= 1;
+			newRow.status = "PASS";
+			newRow.load -= 100;
+			clearInterval(rowDataChange);
+			$scope.in_progress_disabled = true;
+		}else{
+			newRow.replicas += 1;
+			newRow.load += 100;
+			newRow.status = "PASS";
+		}
+		newRow.timestamp += 1000000;
+		gridApi.updateRowData({ "add": [newRow]});
+		lastRowData = newRow;
+		$scope.loadvalue = newRow.load/10;
 	}
 });

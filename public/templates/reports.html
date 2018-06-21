@@ -25,20 +25,23 @@
 				<h1 class="card-value">RMQ</h1>
 			</div>
 		</div>
-		<div class="in-progress" ng-if="!in_progress_disabled">
+		<div class="in-progress"  ng-if="!in_progress_disabled">
 			<div>
 				<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 			</div>
 			<h3>In Progress</h3>
 			<button type="button" class="btn btn-danger" ng-click="stop()">Stop</button>
 			<button type="button" class="btn btn-warning" ng-click="pause()">Pause</button>
+		</div>
+		<div class="in-progress"  ng-if="in_progress_disabled">
+			<h3>Completed</h3>
 			<button type="button" class="btn btn-secondary" ng-click="downloadReport()">Download Report</button>
 		</div>
 	</div>
 	<div class="section-1">
 		<div ag-grid="gridOptions" class="ag-theme-material" style="height: 100%;width:100%"></div>
 		<div>
-			<gauge-chart></gauge-chart>
+			<gauge-chart loadvalue="loadvalue"></gauge-chart>
 		</div>
 	</div>
 </div>
