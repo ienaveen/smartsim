@@ -1,19 +1,23 @@
-<div ng-controller="GraphsReportsCtrl" class="graph-reports">
-	<div class="card">
-		<div class="card-body">
-			<live-bar-chart cdpdata="releaseload" title="title"></live-bar-chart>
+<div ng-controller="GraphsReportsCtrl">
+	<div class="graph-reports">
+		<div class="card">
+			<div class="card-body">
+				<live-bar-chart cdpdata="releaseload" title="title"></live-bar-chart>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h3>Top 2 best characterisation</h3>
+				<div ag-grid="gridOptions1" class="ag-theme-material" style="height: 32rem;width:100%"></div>
+			</div>
 		</div>
 	</div>
-	<div class="card">
-		<div class="card-body">
-			<h3>Top 2 best characterisation</h3>
-			<div ag-grid="gridOptions1" class="ag-theme-material" style="height: 32rem;width:100%"></div>
-		</div>
-	</div>
-	<div class="card">
+
+	<div class="card" style="margin-top: 2rem">
 		<div class="card-body">
 			<h3>Last 5 simulator runs</h3>
 			<div ag-grid="gridOptions2" class="ag-theme-material" style="height: 32rem;width:100%"></div>
 		</div>
 	</div>
+
 </div>

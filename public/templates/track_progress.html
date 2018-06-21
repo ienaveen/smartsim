@@ -1,6 +1,6 @@
 <div ng-controller="TabsCtrl" class="ui_health track-progress">
 	<div class="banner">
-		<div class="card">
+		<!-- <div class="card">
 			<div class="card-body">
 				<h5 class="card-title">System</h5>
 				<h4 class="card-value">{{selectedRow.name}}</h4>
@@ -22,6 +22,31 @@
 			<div class="card-body">
 				<h5 class="card-title">Metrics</h5>
 				<h4 class="card-value">{{selectedRow.metrics}}</h4>
+			</div>
+		</div> -->
+
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">System</h5>
+				<h4 class="card-value">Central-Lite</h4>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Target Entity</h5>
+				<h4 class="card-value">Rabbit MQ app</h4>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Simulator</h5>
+				<h4 class="card-value">AP-SIM</h4>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Metrics</h5>
+				<h4 class="card-value">RMQ</h4>
 			</div>
 		</div>
 		<div class="in-progress" ng-if="!in_progress_disabled">
