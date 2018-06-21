@@ -1,11 +1,11 @@
-<div ng-controller="Tabs3Ctrl" id="t3">
-  <h3>Tabs3 Page</h3>
-  <md-button class="md-primary" class="md-primary md-raised" ng-click="showTabDialog($event)">Button1</md-button>
-  <div class="section-1">
-    <div ag-grid="gridOptions3" class="ag-theme-material" style="height: 100%;width:100%"></div>    
-  </div>
-  <div>
-    <script type="text/ng-template" id="tabDialog.tmpl.html"><md-dialog aria-label="Simulator Configuration	">
+<div ng-controller="Tabs3Ctrl" id="t3" class="simulators">
+	<h3>Tabs3 Page</h3>
+	<md-button class="md-primary" class="md-primary md-raised" ng-click="showTabDialog($event)">Button1</md-button>
+	<div class="section-1">
+		<div ag-grid="gridOptions3" class="ag-theme-material" style="height: 100%;width:100%"></div>
+	</div>
+	<div>
+		<script type="text/ng-template" id="tabDialog.tmpl.html"><md-dialog aria-label="Simulator Configuration	">
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -19,63 +19,77 @@
     <md-dialog-content style="max-width:1000px;max-height:810px;min-width:700px;min-height:350px; ">
       <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="System">
-          <md-content class="md-padding-8">  
-          	<br/> 
-          	<div layout-gt-sm="row">       
-	            <md-input-container class="md-block" flex-gt-sm=""> 
+          <md-content class="md-padding-8">
+          	<br/>
+          	<div layout-gt-sm="row">
+	            <md-input-container>
 	              <label>System</label>
 	              <input ng-model="user.system">
-	            </md-input-container>                      
+	            </md-input-container>
 	            <md-input-container >
 	              <label>Description</label>
 	              <input ng-model="user.description">
 	            </md-input-container>
 	        </div>
             <br/>
-            <div layout-gt-sm="row">       
-            <md-input-container class="md-block" flex-gt-sm="">
+            <div layout-gt-sm="row">
+            <md-input-container>
               <label>Type</label>
               <input ng-model="user.type">
-            </md-input-container>            
-            <md-input-container class="md-block" flex-gt-sm="">
+            </md-input-container>
+            <md-input-container>
               <label>Credentials</label>
               <input ng-model="user.credentials">
             </md-input-container>
-           </div>            
-          </md-content>                 
+           </div>
+          </md-content>
         </md-tab>
         <md-tab label="Target Entity">
-        	<md-content class="md-padding-8">  
-          	<br/> 
-          	<div layout-gt-sm="row">       
-	            <md-input-container class="md-block" flex-gt-sm=""> 
+        	<md-content class="md-padding-8 sim-config">
+          	<h3>Metric Definition</h3>
+          	<div>
+	            <md-input-container class="md-block">
 	              <label>Name</label>
 	              <input ng-model="user.name">
-	            </md-input-container>  	                                	            
-	            <md-input-container class="md-block" flex-gt-sm="">
-		            <label>Type</label>
-		            <md-select ng-model="user.target_type">
-		              <md-option ng-repeat="typ in target_types" value="{{typ}}">
-		                {{typ}}
-		              </md-option>
-		            </md-select>
-		        </md-input-container>
-	            <md-input-container >
-	              <label>Type</label>
-	              <input ng-model="user.metric_definitions">
 	            </md-input-container>
-	        </div>
-            <br/>
-            <div layout-gt-sm="row">       
-            <md-input-container class="md-block" flex-gt-sm="">
-              <label>Type</label>
-              <input ng-model="user.type">
-            </md-input-container>            
-            <md-input-container class="md-block" flex-gt-sm="">
-              <label>Credentials</label>
-              <input ng-model="user.credentials">
-            </md-input-container>
-           </div>            
+						</div>
+						<div ng-repeat="metric in metrics">
+	            <md-input-container class="md-block">
+		            <label>Type</label>
+		            <md-select ng-model="metric.type">
+		              <md-option ng-repeat="type in entity_types" ng-value="type">{{type.name}}</md-option>
+								</md-select>
+							</md-input-container>
+							<div layout-gt-sm="row" ng-if="metric.type.value === 'process' || metric.type.value === 'pod' ">
+									<md-input-container>
+										<label>Name</label>
+										<input ng-model="metric.name">
+									</md-input-container>
+									<md-input-container>
+										<label>CPU Threshold</label>
+										<input ng-model="metric.cpu">
+									</md-input-container>
+									<md-input-container>
+										<label>Memory Threshold</label>
+										<input ng-model="metric.memory">
+									</md-input-container>
+							</div>
+							<div layout-gt-sm="row" ng-if="metric.type.value && metric.type.value !== 'process' && metric.type.value !== 'pod' ">
+									<md-input-container>
+										<label>Name</label>
+										<input ng-model="metric.name">
+									</md-input-container>
+									<md-input-container>
+										<label>Threshold</label>
+										<input ng-model="metric.memory">
+									</md-input-container>
+							</div>
+						</div>
+						<div>
+	            <md-whiteframe class="md-whiteframe-1dp add-metric" flex-gt-md="90" layout layout-align="center center" ng-click="addMetric()">
+								<span>Add Metric</span>
+							</md-whiteframe>
+						</div>
           </md-content>
 
         </md-tab>
@@ -98,7 +112,7 @@
       <md-button ng-click="answer('not useful')" >
         Cancel
       </md-button>
-      <span flex></span>      
+      <span flex></span>
       <md-button ng-click="" style="margin-right:20px;" class="md-primary md-raised" >
         Next
       </md-button>
@@ -106,7 +120,7 @@
   </form>
 </md-dialog>
 </script>
-  </div>
+	</div>
 
 </div>
 </div>
