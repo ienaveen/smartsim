@@ -1,6 +1,7 @@
-.paddingnone{
+.paddingnone {
     padding-left: 0px !important;
 }
+
 #t3 {
     .md-display-1 {
         font-size: 24px !important;
@@ -20,6 +21,36 @@ button {
     grid-template-columns: 60% auto;
     grid-gap: 10px;
     height: 100%;
+}
+
+%green-background {
+    background-color: #00B388;
+    color: white;
+}
+
+.sim-conf-form {
+    .md-toolbar-tools {
+        @extend %green-background;
+    }
+    md-tabs-wrapper .md-active {
+        background-color: white;
+        color: #00B388;
+    }
+    .md-input-focused label {
+        color: #00B388 !important;
+    }
+    .md-input-focused .md-input {
+        border-color: #00B388 !important;
+    }
+    md-dialog-actions .md-primary {
+        @extend %green-background;
+    }
+    .md-input-focused md-select-value {
+        border-color: #00B388 !important;
+    }
+    .md-input-focused md-select-value span {
+        color: #00B388 !important;
+    }
 }
 
 .banner {
@@ -132,8 +163,18 @@ div[layout-gt-sm] {
 }
 
 .ag-header-row {
-    background-color: #00B388;
-    color: white;
+    @extend %green-background;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    margin-bottom: 1rem;
+    button,
+    button:hover {
+        background-color: #00B388 !important;
+        color: white !important;
+    }
 }
 
 .ag-body-viewport {
@@ -161,6 +202,15 @@ div[layout-gt-sm] {
 
 .result-completed {
     margin: 0 30%;
+}
+
+.sim-button-container {
+    float: right;
+    margin-right: 3rem;
+    button {
+        background-color: #00B388;
+        color: white;
+    }
 }
 
 $border-color: #d2d0cd;

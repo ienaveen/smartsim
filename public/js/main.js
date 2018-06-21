@@ -3,6 +3,12 @@ app.config(function ($routeProvider) {
 		.when("/", {
 			templateUrl: "templates/dashboard.html"
 		})
+		.when("/TRACKPROGRESS", {
+			templateUrl: "templates/track_progress.html"
+		})
+		.when("/REPORTS", {
+			templateUrl: "templates/graphs_and_reports.html"
+		})
 })
 app.factory('socket', function ($rootScope) {
 

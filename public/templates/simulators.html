@@ -1,11 +1,17 @@
 <div ng-controller="Tabs3Ctrl" id="t3" class="simulators">
-  <h3>Simulators</h3>
-  <md-button class="md-primary" class="md-primary md-raised" ng-click="showTabDialog($event)">Add Simulator</md-button>
-
-  <div ag-grid="gridOptions3" class="ag-theme-material" style="height: 100%;width:100%"></div>
-  <div>
+	<h3>Simulators</h3>
+	<div class="button-container">
+		<div></div>
+		<md-button class="md-primary" class="md-primary md-raised" ng-click="showTabDialog($event)">Add Simulator</md-button>
+	</div>
+  <div ag-grid="gridOptions3" class="ag-theme-material" style="height:18rem ;width:100%"></div>
+  <div class="sim-button-container" ng-if="selectedRow">
+		<button type="button" class="btn" ng-click="start()">Start</button>
+		<button type="button" class="btn" ng-click="">Reports</button>
+		<button type="button" class="btn" ng-click="">Track Progress</button>
+	</div>
     <script type="text/ng-template" id="tabDialog.tmpl.html"><md-dialog aria-label="Simulator Configuration	">
-  <form>
+  <form class="sim-conf-form">
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>Simulator Configuration</h2>
@@ -38,7 +44,7 @@
           </div>
           <span class="display-header md-padding paddingnone">Credentials</span>
             <br/>
-            <div layout-gt-sm="row">            
+            <div layout-gt-sm="row">
               <md-input-container>
                 <label>UserName</label>
                 <input ng-model="user.user_name">
@@ -108,20 +114,20 @@
                 <label>Type</label>
                 <md-select ng-model="type.name">
                   <md-option ng-repeat="type in simulator_types" ng-value="type.name">{{type.name}}</md-option>
-                </md-select>               
-              </md-input-container> 
+                </md-select>
+              </md-input-container>
               <md-input-container>
                   <label ng-if = "type.name == 'CMD'">Enter Command</label>
                 <input ng-model="user.user_name" ng-if = "type.name == 'CMD'">
                 <md-button ng-if = "type.name == 'Kubernetes YAML'">
-                    Browse 
+                    Browse
                 </md-button>
-            </md-input-container> 
+            </md-input-container>
 
             </div>
             <span class="display-header md-padding paddingnone">Credentials</span>
             <br/>
-            <div layout-gt-sm="row">            
+            <div layout-gt-sm="row">
               <md-input-container>
                 <label>UserName</label>
                 <input ng-model="user.user_name">
@@ -171,10 +177,10 @@
       <md-button ng-click="backTab()" ng-if="selectedIndex !== 0">
         Back
       </md-button>
-      <md-button ng-click="changeTab()" style="margin-right:20px;" class="md-primary md-raised" ng-if="selectedIndex !== 3">
+      <md-button ng-click="changeTab()" style="margin-right:20px;background-color: #00B388; color: white;" class="md-primary md-raised" ng-if="selectedIndex !== 3">
         Next
       </md-button>
-      <md-button ng-click="answer()" style="margin-right:20px;" class="md-primary md-raised" ng-if="selectedIndex == 3">
+      <md-button ng-click="answer()" style="margin-right:20px;background-color: #00B388; color: white;" class="md-primary md-raised" ng-if="selectedIndex == 3">
         Save
       </md-button>
     </md-dialog-actions>

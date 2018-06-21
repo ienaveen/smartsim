@@ -13,7 +13,7 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
     { name: "Malshi",type: "AC-DC", target_entity: "PA", simulator: "UI SIMULATOR", metrics: "CPU,MEMORY,POSTGRE", state: "NOT STARTED" },
     { name: "Central-Lite",type: "Central", target_entity: "Rabbit MQ app", simulator: "AP-SIM", metrics: "RMQ", state: "NOT STARTED" },
     { name: "AW10_1Node",type: "AirWave", target_entity: "UCC", simulator: "C-SIM", metrics: "CPU,MEMORY,RMQ", state: "COMPLETED" },
-    { name: "Controller",system: "Controller", target_entity: "Air Group", simulator: "CPU,ZMQ,DATAPATH", metrics: "CPU", state: "COMPLETED" }    
+    { name: "Controller",system: "Controller", target_entity: "Air Group", simulator: "CPU,ZMQ,DATAPATH", metrics: "CPU", state: "COMPLETED" }
 	];
 
 
@@ -35,6 +35,7 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		rowDragManaged: true,
 		animateRows: true,
 	};
+
 	$scope.showTabDialog = function (ev) {
 		$mdDialog.show({
 			controller: DialogController,
@@ -49,6 +50,17 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 				$scope.status = 'You cancelled the dialog.';
 			});
 	};
+
+	$scope.start = function() {
+		var row = $rootScope.selectedRow;
+		row.state = "IN-PROGRESS";
+		gridApi.updateRowData({ "update": [row] });
+	}
+
+	$scope.trackProgress = function () {
+		$location.path("/TRACKPROGRESS");
+	}
+
 	function DialogController($scope, $mdDialog) {
 		$scope.hide = function () {
 			$mdDialog.hide();
@@ -79,16 +91,16 @@ app.controller("Tabs3Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			{ value: "datapath", name: 'datapath' },
 			{ value: "postgre", name: 'postgre' }
     ];
-    $scope.simulator_types = [			
-      { value: "Kubernetes YAML", name: 'Kubernetes YAML' },	
+    $scope.simulator_types = [
+      { value: "Kubernetes YAML", name: 'Kubernetes YAML' },
       { value: "CMD ", name: 'CMD' }
     ];
-    $scope.system_types = [			
-      { value: "Central", name: "Central" },	
+    $scope.system_types = [
+      { value: "Central", name: "Central" },
       { value: "AC-DC", name: "AC-DC" },
-      { value: "AirWave", name: "AirWave" },	
+      { value: "AirWave", name: "AirWave" },
       { value: "Controller", name: "Controller" }
-      
+
     ];
 
 		$scope.metrics = [];
