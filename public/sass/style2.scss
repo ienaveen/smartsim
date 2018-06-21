@@ -22,10 +22,8 @@ button{
     margin-bottom: 4rem;
     position: relative;
     .card {
-        border: 0px;
-        background-color: #39b939;
-        color: white;
-        border-radius: 50%;
+        color: #00B388;
+        border: 2px solid #00B388;
         .card-body * {
             text-align: center;
         }
@@ -64,16 +62,60 @@ gauge-chart {
 
 .result {
     color: #1ee01e;
+    margin-bottom: 3rem;
 }
 
 md-content {
     padding-left: 5%;
+    padding-bottom: 10%;
+}
+
+md-whiteframe span {
+    margin: 2rem;
 }
 
 div[layout-gt-sm] {
     display: grid;
     grid-template-columns: 40% 40%;
     grid-gap: 10%;
+}
+
+.sim-config {
+    h3 {
+        padding: 1rem 0rem;
+    }
+    .add-metric {
+        cursor: pointer;
+    }
+    md-select {
+        width: 100%;
+    }
+}
+
+.nav-tabs {
+    background-color: #00B388;
+    margin-bottom: 2rem !important;
+    .nav-link.active {
+        color: #00B388 !important;
+    }
+    .nav-link:hover {
+        color: white;
+        font-weight: 500;
+    }
+}
+
+.cdp_tabs {
+    .nav-tabs {
+        background-color: white;
+        .uib-tab {
+            background-color: #00B388;
+        }
+    }
+}
+
+.ag-header-row {
+    background-color: #00B388;
+    color: white;
 }
 
 $border-color: #d2d0cd;

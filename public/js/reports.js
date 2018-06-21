@@ -1,6 +1,6 @@
 app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $localStorage) {
 
-	$scope.in_progress_disabled = false;
+	$rootScope.in_progress_disabled = false;
 	let gridApi, gridColumnApi;
 	$scope.loadvalue = 0;
 
@@ -74,7 +74,7 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 	}
 
 	$scope.stop = function () {
-		$scope.in_progress_disabled = true;
+		$rootScope.in_progress_disabled = true;
 		toastr.success("Simulator stopped");
 	}
 
@@ -100,7 +100,7 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			newRow.metric_status = "STABLE";
 			newRow.load -= 100;
 			clearInterval(rowDataChange);
-			$scope.in_progress_disabled = true;
+			$rootScope.in_progress_disabled = true;
 		}else{
 			newRow.replicas += 1;
 			newRow.load += 100;

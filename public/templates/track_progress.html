@@ -1,4 +1,42 @@
 <div ng-controller="TabsCtrl" class="ui_health">
+	<div class="banner">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">System</h5>
+				<h1 class="card-value">Central</h1>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Target Entity</h5>
+				<h1 class="card-value">UCC</h1>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Simulator</h5>
+				<h1 class="card-value">APSim</h1>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Metrics</h5>
+				<h1 class="card-value">RMQ</h1>
+			</div>
+		</div>
+		<div class="in-progress" ng-if="!in_progress_disabled">
+			<div>
+				<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+			</div>
+			<h3>In Progress</h3>
+			<button type="button" class="btn btn-danger" ng-click="stop()">Stop</button>
+			<button type="button" class="btn btn-warning" ng-click="pause()">Pause</button>
+		</div>
+		<div class="in-progress" ng-if="in_progress_disabled">
+			<h3>Completed</h3>
+			<button type="button" class="btn btn-secondary" ng-click="downloadReport()">Download Report</button>
+		</div>
+	</div>
 	<uib-tabset class="cdp_tabs">
 		<uib-tab index="0">
 			<uib-tab-heading> Reports </uib-tab-heading>
