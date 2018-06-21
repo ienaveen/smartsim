@@ -38,8 +38,14 @@
 			<button type="button" class="btn btn-secondary" ng-click="downloadReport()">Download Report</button>
 		</div>
 	</div>
+	<div class="card result"  ng-if="in_progress_disabled">
+		<div class="card-body">
+			<h5 class="card-title">Final Result:</h5>
+			<h1 class="card-value">Load: 700  Replicas: 7</h1>
+		</div>
+	</div>
 	<div class="section-1">
-		<div ag-grid="gridOptions" class="ag-theme-material" style="height: 100%;width:100%"></div>
+		<div ag-grid="gridOptions" class="ag-theme-material" style="height: 32rem;width:100%"></div>
 		<div>
 			<gauge-chart loadvalue="loadvalue"></gauge-chart>
 		</div>

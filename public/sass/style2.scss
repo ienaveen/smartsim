@@ -1,8 +1,9 @@
-#t3{
-.md-display-1
-{font-size: 24px !important;
-border-radius:5px}
+#t3 {
+    .md-display-1 {
+        font-size: 24px !important;
+    }
 }
+
 .section-1 {
     display: grid;
     grid-template-columns: 60% auto;
@@ -47,10 +48,28 @@ border-radius:5px}
 gauge-chart {
     .amcharts-chart-div a {
         color: white !important;
-	}
-	svg{
-		height: 600px !important;
-	}
+    }
+    svg {
+        height: 600px !important;
+    }
+}
+
+.screen {
+    background-color: white;
+}
+
+.result {
+    color: #1ee01e;
+}
+
+md-content {
+    padding-left: 5%;
+}
+
+div[layout-gt-sm] {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-gap: 10%;
 }
 
 $border-color: #d2d0cd;
