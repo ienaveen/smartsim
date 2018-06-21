@@ -12,14 +12,14 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			},
 			sort: "desc"
 		},
-		{ headerName: "Load", field: "load", width: 110 },
+		{ headerName: "Load", field: "load", width: 100 },
 		{ headerName: "Replicas", field: "replicas", width: 120 },
-		{ headerName: "Failed Metrics", field: "failed_metrics", width: 160 },
-		{ headerName: "Status", field: "status" }
+		{ headerName: "Failed Metrics", field: "failed_metrics", width: 150 },
+		{ headerName: "Metric Status", field: "metric_status", width: 150 }
 	];
 
 	var rowData = [
-		{ timestamp: 1529553131, load: 100, replicas: 1, failed_metrics: "RMQ Failed", status: "PASS" }
+		{ timestamp: 1529553131, load: 100, replicas: 1, failed_metrics: "RMQ Failed", metric_status: "STABLE" }
 	];
 
 	var lastRowData = rowData[0];
@@ -34,7 +34,6 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			gridApi.sizeColumnsToFit();
 		},
 		enableSorting: true,
-		enableFilter: true,
 		rowDragManaged: true,
 		animateRows: true,
 		onRowDataUpdated: function () {
@@ -44,7 +43,7 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 			});
 		},
 		getRowStyle: function (params) {
-			if (params.node.data.status === "PASS") {
+			if (params.node.data.metric_status === "STABLE") {
 				return { color: 'green' }
 			}else{
 				return { color: 'red' }
@@ -95,17 +94,17 @@ app.controller("Tabs1Ctrl", function ($scope, $location, $rootScope, $http, $loc
 		if (lastRowData.load === 700) {
 			newRow.load += 100;
 			newRow.replicas += 1;
-			newRow.status = "FAIL";
+			newRow.metric_status = "UNSTABLE";
 		} else if(lastRowData.load === 800) {
 			newRow.replicas -= 1;
-			newRow.status = "PASS";
+			newRow.metric_status = "STABLE";
 			newRow.load -= 100;
 			clearInterval(rowDataChange);
 			$scope.in_progress_disabled = true;
 		}else{
 			newRow.replicas += 1;
 			newRow.load += 100;
-			newRow.status = "PASS";
+			newRow.metric_status = "STABLE";
 		}
 		newRow.timestamp += 1000000;
 		gridApi.updateRowData({ "add": [newRow]});
