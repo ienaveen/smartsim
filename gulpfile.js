@@ -10,15 +10,11 @@ gulp.task('scripts', function () {
     return gulp
 			.src([
 				"./public/js/directives/*.js",
-				// "./public/js/global.js",
-				// "./public/js/app-c.js",
-				// "./public/js/cdps.js",
-				// "./public/js/ui_health.js",
-				// "./public/js/ui_analytics.js"
 				"./public/js/main.js",
 				"./public/js/track_progress.js",
 				"./public/js/reports.js",
-				"./public/js/system_info.js"
+				"./public/js/system_info.js",
+				"./public/js/*.js"
 			])
 			.pipe(concat("output.js"))
 			.pipe(gulp.dest("./public/dist/"));
